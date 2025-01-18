@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         {/* Logo */}
-        <div className="text-xl font-bold">AdvancedBrand</div>
+        <Link to="/">
+          <div className="text-xl font-bold">AdvancedBrand</div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-6 items-center">
