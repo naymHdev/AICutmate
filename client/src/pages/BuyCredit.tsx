@@ -1,11 +1,11 @@
-
+import PricingPlans from "./pricing/PricingPlans";
 
 const BuyCredit = () => {
-    return (
-        <>
-        <p>BuyCredit</p>    
-        </>
-    );
+  return (
+    <>
+      <PricingPlans />
+    </>
+  );
 };
 
 export default BuyCredit;

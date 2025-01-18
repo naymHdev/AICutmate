@@ -2,17 +2,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const { openSignIn } = useClerk();
+  const { isSignedIn } = useUser();
 
   return (
     <nav className="bg-white text-gray-900">
       <div className="container mx-auto px-4 flex justify-between items-center h-16">
         {/* Logo */}
         <Link to="/">
-          <div className="text-xl font-bold">AdvancedBrand</div>
+          <div className="text-xl font-bold">AICutmate</div>
         </Link>
 
         {/* Desktop Menu */}
@@ -29,7 +33,15 @@ const Navbar = () => {
         </div>
 
         <div>
-          <Button>Login</Button>
+          {isSignedIn ? (
+            <>
+              <UserButton />
+            </>
+          ) : (
+            <>
+              <Button onClick={() => openSignIn({})}>Login</Button>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}

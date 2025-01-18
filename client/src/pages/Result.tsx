@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import image from "../assets/images/remove-background-hd.jpg";
 const Result = () => {
   return (
@@ -18,6 +19,14 @@ const Result = () => {
             </p>
             <img className=" rounded-md border" src={image} alt="" />
           </div>
+        </div>
+        <div className=" mt-6 flex items-center justify-center gap-3">
+          <Button className="bg-blue-600 text-white hover:text-black">
+            Upload+
+          </Button>
+          <Button className="bg-red-600 text-white hover:text-black">
+            Download
+          </Button>
         </div>
       </div>
     </>
