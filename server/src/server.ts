@@ -9,17 +9,17 @@ async function main() {
   try {
     await mongoose.connect(config.database_url as string);
 
-    app.listen(config.port, () => {
-      console.log(`Server running on this port >>-- ${config.port}`);
+    server = app.listen(config.port, () => {
+      console.log(` 🚀 Server is running on port ${config.port}`);
     });
   } catch (error) {
-    `Error from server 😔 connection catch 🤮 block: ${error}`;
+    console.log(`😈 Error starting the server: ${error}`);
   }
 }
 main();
 
-process.on("unhandledRejection", () => {
-  // console.log(`😈 unhandledRejection is detected , shutting down ...`);
+process.on("unhandledRejection", (err) => {
+  console.log(`😈 unhandledRejection is detected , shutting down ...`, err);
 
   if (server) {
     server.close(() => {
@@ -31,6 +31,6 @@ process.on("unhandledRejection", () => {
 });
 
 process.on("uncaughtException", () => {
-  // console.log(`😈 uncaughtException is detected , shutting down ...`);
+  console.log(`😈 uncaughtException is detected , shutting down ...`);
   process.exit(1);
 });
